@@ -16,6 +16,10 @@ public class Employee extends Entities {
     @JoinColumn(name = "c_head")
     private Employee head;
 
+    @ManyToOne
+    @JoinColumn(name="c_categoryElements")
+    private CategoryElements categoryElements;
+
     public String getName() {
         return name;
     }

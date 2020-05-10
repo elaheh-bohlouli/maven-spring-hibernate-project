@@ -1,27 +1,40 @@
 package controller;
 
 import model.AskDayOff;
-import model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import repository.AskDayOffRepository;
-import repository.EmployeeRepository;
+
 import java.util.List;
 
 @RestController
 @RequestMapping(value = "/AskDayOff")
 public class AskDayOffController {
 
-    private AskDayOffRepository askDayOffRepository;
-    private EmployeeRepository employeeRepository;
+    private final AskDayOffRepository askDayOffRepository;
+    @Autowired
+    public AskDayOffController(AskDayOffRepository askDayOffRepository) {
+        this.askDayOffRepository = askDayOffRepository;
+    }
 
     @PostMapping("/InsertAskDayOff")
     public void insertAskDayOff(@RequestBody AskDayOff askDayOff) {
         askDayOffRepository.save(askDayOff);
     }
 
+    @GetMapping("/GetByIdAskDayOff")
+    public AskDayOff askDayOff(@RequestParam int id) throws ItemNotFoundException {
+        return askDayOffRepository.findById(id).orElseThrow(() -> new ItemNotFoundException());
+    }
+
     @GetMapping("/GetAllAskDayOff")
-    public List<AskDayOff> askDayOffList(@RequestParam Employee employee) {
+    public List<AskDayOff> askDayOffList(){
         return askDayOffRepository.findAll();
+    }
+
+    @PostMapping("/UpdateAslDayOff")
+    public void updateEmployee(@RequestBody AskDayOff askDayOff){
+        askDayOffRepository.save(askDayOff);
     }
 
     @DeleteMapping("/DeleteAskDayOff")

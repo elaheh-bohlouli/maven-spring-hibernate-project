@@ -21,6 +21,10 @@ public class Email extends Entities {
             inverseJoinColumns = {@JoinColumn(name = "c_employee")})
     private Set<Employee> receivers;
 
+    @ManyToOne
+    @JoinColumn(name="c_categoryElements")
+    private CategoryElements categoryElements;
+
     public String getText() {
         return text;
     }

@@ -21,6 +21,10 @@ public class AskDayOff extends Entities {
     @JoinColumn(name = "c_Employee")
     private Employee employee;
 
+    @ManyToOne
+    @JoinColumn(name="c_categoryElements")
+    private CategoryElements categoryElements;
+
 
     public Date getBeginDate() {
         return beginDate;
