@@ -25,7 +25,6 @@ public class AskDayOff extends Entities {
     @JoinColumn(name="c_categoryElements")
     private CategoryElements categoryElements;
 
-
     public Date getBeginDate() {
         return beginDate;
     }
@@ -56,6 +55,14 @@ public class AskDayOff extends Entities {
 
     public void setEmployee(Employee employee) {
         this.employee = employee;
+    }
+
+    public CategoryElements getCategoryElements() {
+        return categoryElements;
+    }
+
+    public void setCategoryElements(CategoryElements categoryElements) {
+        this.categoryElements = categoryElements;
     }
 }
 

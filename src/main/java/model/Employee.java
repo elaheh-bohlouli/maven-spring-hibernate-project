@@ -43,4 +43,12 @@ public class Employee extends Entities {
     public void setHead(Employee head) {
         this.head = head;
     }
+
+    public CategoryElements getCategoryElements() {
+        return categoryElements;
+    }
+
+    public void setCategoryElements(CategoryElements categoryElements) {
+        this.categoryElements = categoryElements;
+    }
 }

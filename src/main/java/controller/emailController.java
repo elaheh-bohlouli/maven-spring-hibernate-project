@@ -1,20 +1,40 @@
 package controller;
 
+import Commen.ItemNotFoundException;
 import model.Email;
-import model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import repository.EmailRepository;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/EmailController")
 public class EmailController {
 
+    private final EmailRepository emailRepository;
     @Autowired
-    private Email email;
+    public EmailController(EmailRepository emailRepository) {
+        this.emailRepository = emailRepository;
+    }
 
-    @PostMapping("/InsertAskDayOff")
-    public void insertAskDayOff(@RequestBody Employee employee){}
+    @PostMapping("/InsertEmail")
+    public void insertAskDayOff(@RequestBody Email email){
+        emailRepository.save(email);
+    }
+
+    @GetMapping("/GetByIdEmail")
+    public Email email(@RequestParam int id) throws ItemNotFoundException {
+        return emailRepository.findById(id).orElseThrow(() -> new ItemNotFoundException());
+    }
+
+    @GetMapping("/GetAllEmail")
+    public List<Email> emailList(){
+        return emailRepository.findAll();
+    }
+
+    @DeleteMapping("/DeleteEmail")
+    public void deleteEmail(@RequestParam int id) {
+        emailRepository.deleteById(id);
+    }
 }

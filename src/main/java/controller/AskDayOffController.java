@@ -1,5 +1,6 @@
 package controller;
 
+import Commen.ItemNotFoundException;
 import model.AskDayOff;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +9,7 @@ import repository.AskDayOffRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/AskDayOff")
+@RequestMapping(value = "/AskDayOffController")
 public class AskDayOffController {
 
     private final AskDayOffRepository askDayOffRepository;
@@ -33,7 +34,7 @@ public class AskDayOffController {
     }
 
     @PostMapping("/UpdateAslDayOff")
-    public void updateEmployee(@RequestBody AskDayOff askDayOff){
+    public void updateAskDayOff(@RequestBody AskDayOff askDayOff){
         askDayOffRepository.save(askDayOff);
     }
 
