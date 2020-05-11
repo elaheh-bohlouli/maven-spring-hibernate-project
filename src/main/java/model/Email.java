@@ -10,6 +10,7 @@ public class Email extends Entities {
     @Column(name = "c_text")
     private String text;
 
+
     @ManyToOne
     @JoinColumn(name = "c_employee")
     private Employee employee;
@@ -47,5 +48,13 @@ public class Email extends Entities {
 
     public void setReceivers(Set<Employee> receivers) {
         this.receivers = receivers;
+    }
+
+    public CategoryElements getCategoryElements() {
+        return categoryElements;
+    }
+
+    public void setCategoryElements(CategoryElements categoryElements) {
+        this.categoryElements = categoryElements;
     }
 }

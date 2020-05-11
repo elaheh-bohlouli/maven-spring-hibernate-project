@@ -18,8 +18,8 @@ public class EmailController {
         this.emailRepository = emailRepository;
     }
 
-    @PostMapping("/InsertEmail")
-    public void insertAskDayOff(@RequestBody Email email){
+    @PostMapping("/SentEmail")
+    public void sendEmail(@RequestBody Email email){
         emailRepository.save(email);
     }
 

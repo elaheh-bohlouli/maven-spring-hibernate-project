@@ -12,16 +12,16 @@ public class Entities implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private int id;
 
-    @Column(name = "c_CreatedDateTime")
+    @Column(name = "c_createdDateTime")
     private Date createDataTime;
 
-    @Column(name = "c_LastModifiedDateTime")
+    @Column(name = "c_lastModifiedDateTime")
     private Date lastModifiedDataTime;
 
-    @Column(name = "c_Active")
+    @Column(name = "c_active")
     private Boolean active;
 
-    @Column(name = "c_ManualId")
+    @Column(name = "c_manualId")
     private String manualId;
 
     public int getId() {

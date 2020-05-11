@@ -32,11 +32,11 @@ public class AskDayOffController {
     public List<AskDayOff> askDayOffList(){
         return askDayOffRepository.findAll();
     }
-
+/*
     @PostMapping("/UpdateAslDayOff")
     public void updateAskDayOff(@RequestBody AskDayOff askDayOff){
         askDayOffRepository.save(askDayOff);
-    }
+    }*/
 
     @DeleteMapping("/DeleteAskDayOff")
     public void delete(@RequestParam int id) {

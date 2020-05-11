@@ -21,7 +21,7 @@ public class CategoryElementController {
 
 
     @PostMapping("/InsertCategryElement")
-    public void insertAskDayOff(@RequestBody CategoryElements categoryElements) {
+    public void insertCategoryElement(@RequestBody CategoryElements categoryElements) {
         categoryElementRepository.save(categoryElements);
     }
 
