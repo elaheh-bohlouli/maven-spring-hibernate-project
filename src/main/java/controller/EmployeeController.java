@@ -4,7 +4,7 @@ import exceptions.ItemNotFoundException;
 import model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import service.EmployeeCRUDService;
+import service.EmployeeService;
 
 import java.util.List;
 
@@ -13,30 +13,30 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    private EmployeeCRUDService employeeCRUDService;
+    private EmployeeService employeeService;
 
     @PostMapping("/InsertEmployee")
     public void insertEmployee(@RequestBody Employee employee){
-        employeeCRUDService.save(employee);
+        employeeService.create(employee);
     }
 
     @GetMapping("/GetByIdEmployee")
     public Employee employeeGetById(@RequestParam int id) throws ItemNotFoundException {
-        return employeeCRUDService.findById(id).orElseThrow(() -> new ItemNotFoundException());
+        return employeeService.findById(id).orElseThrow(() -> new ItemNotFoundException());
     }
 
     @GetMapping("/FindAllEmloyee")
     public List<Employee> employeeList(){
-        return employeeCRUDService.findAll();
+        return employeeService.findAll();
     }
 
     @PostMapping("/UpdateEmloyee")
     public void updateEmployee(@RequestBody Employee employee){
-        employeeCRUDService.save(employee);
+        employeeService.update(employee);
     }
 
     @DeleteMapping("/DeleteEmployee")
     public void deleteEmployee(@RequestParam int id){
-        employeeCRUDService.deleteById(id);
+        employeeService.deleteById(id);
     }
 }

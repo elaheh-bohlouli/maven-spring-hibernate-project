@@ -59,7 +59,7 @@ public class App {
 
         CategoryElements askDayOffStatus3 = new CategoryElements();
         askDayOffStatus3.setCategory(askDayOff);
-        askDayOffStatus3.setRole("reject");
+        askDayOffStatus3.setRole("rejected");
         askDayOffStatus3.setName("رد شده");
 
         Employee employee1 = new Employee();

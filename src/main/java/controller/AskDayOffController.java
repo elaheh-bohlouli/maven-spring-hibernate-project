@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import service.AskDayOffService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/AskDayOffController")
@@ -16,11 +17,11 @@ public class AskDayOffController {
 
     @PostMapping("/InsertAskDayOff")
     public void insertAskDayOff(@RequestBody AskDayOff askDayOff) {
-        askDayOffService.creat(askDayOff);
+        askDayOffService.create(askDayOff);
     }
 
     @GetMapping("/GetByIdAskDayOff")
-    public AskDayOff askDayOff(@RequestParam int id) throws ItemNotFoundException {
+    public Optional<AskDayOff> askDayOff(@RequestParam int id) throws ItemNotFoundException {
         return askDayOffService.findById(id);
     }
 
@@ -28,6 +29,7 @@ public class AskDayOffController {
     public List<AskDayOff> askDayOffList(){
         return askDayOffService.findAll();
     }
+
     @PostMapping("/UpdateAslDayOff")
     public void updateAskDayOff(@RequestBody AskDayOff askDayOff){
         askDayOffService.update(askDayOff);
@@ -35,6 +37,6 @@ public class AskDayOffController {
 
     @DeleteMapping("/DeleteAskDayOff")
     public void delete(@RequestParam int id) {
-        askDayOffService.delete(id);
+        askDayOffService.deleteById(id);
     }
 }

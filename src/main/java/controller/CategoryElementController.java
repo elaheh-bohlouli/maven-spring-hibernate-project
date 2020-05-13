@@ -9,33 +9,33 @@ import service.CategoryElementService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/CategryElementController")
+@RequestMapping(value = "/CategoryElementController")
 public class CategoryElementController {
 
     @Autowired
     private CategoryElementService categoryElementService;
 
-    @PostMapping("/InsertCategryElement")
+    @PostMapping("/InsertCategoryElement")
     public void insertCategoryElement(@RequestBody CategoryElements categoryElements) {
-        categoryElementService.save(categoryElements);
+        categoryElementService.create(categoryElements);
     }
 
-    @GetMapping("/GetByIdCategryElement")
+    @GetMapping("/GetByIdCategoryElement")
     public CategoryElements categoryElements(@RequestParam int id) throws ItemNotFoundException {
         return categoryElementService.findById(id).orElseThrow(() -> new ItemNotFoundException());
     }
 
-    @GetMapping("/GetAllCategryElement")
+    @GetMapping("/GetAllCategoryElement")
     public List<CategoryElements> categoryElementList(){
         return categoryElementService.findAll();
     }
 
-    @PostMapping("/UpdateCategryElement")
+    @PostMapping("/UpdateCategoryElement")
     public void update(@RequestBody CategoryElements categoryElements){
-        categoryElementService.save(categoryElements);
+        categoryElementService.update(categoryElements);
     }
 
-    @DeleteMapping("/DeleteCategryElement")
+    @DeleteMapping("/DeleteCategoryElement")
     public void delete(@RequestParam int id) {
         categoryElementService.deleteById(id);
     }

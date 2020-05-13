@@ -35,8 +35,8 @@ public class CategoryElementServiceClass implements CategoryElementService {
     }
 
     @Override
-    public void delete(CategoryElements categoryElements) {
-        categoryElementRepository.delete(categoryElements);
+    public void deleteById(int id) {
+        categoryElementRepository.deleteById(id);
     }
 
     @Override

@@ -17,7 +17,7 @@ public class CategoryController {
 
     @PostMapping("/InsertCategry")
     public void insertCategory(@RequestBody Category category) {
-        categoryService.save(category);
+        categoryService.create(category);
     }
 
     @GetMapping("/GetByIdCategry")
@@ -32,7 +32,7 @@ public class CategoryController {
 
     @PostMapping("/UpdateCategry")
     public void update(@RequestBody Category category){
-        categoryService.save(category);
+        categoryService.update(category);
     }
 
     @DeleteMapping("/DeleteCategry")
