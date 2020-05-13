@@ -28,10 +28,6 @@ public class CategoryElementServiceClass implements CategoryElementService {
         return categoryElementRepository.findById(id);
     }
 
-    @Override
-    public Optional<CategoryElements> findByRole(String role) {
-        return categoryElementRepository.findOne(categoryElements.getRole().equals(role));
-    }
 
     @Override
     public List<CategoryElements> findAll() {

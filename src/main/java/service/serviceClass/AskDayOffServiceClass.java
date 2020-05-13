@@ -16,6 +16,7 @@ import service.CategoryElementService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 @Service
@@ -73,7 +74,9 @@ public class AskDayOffServiceClass implements AskDayOffService {
                 throw new DoNotMatchThisAskDayOffWithThisHeadException();
             }
             else{
-                askDayOff.setCategoryElements(categoryElementRepository.findById());
+                Stream<CategoryElements> accepted = categoryElementRepository.findAll().stream()
+                        .filter(categoryElements -> categoryElements.getRole().equals("accepted"));
+                askDayOff.setCategoryElements(accepted.getId);
             }
         }
         ;
