@@ -1,10 +1,10 @@
 package controller;
 
-import Commen.ItemNotFoundException;
+import exceptions.ItemNotFoundException;
 import model.CategoryElements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import repository.CategoryElementRepository;
+import service.CategoryElementService;
 
 import java.util.List;
 
@@ -12,36 +12,31 @@ import java.util.List;
 @RequestMapping(value = "/CategryElementController")
 public class CategoryElementController {
 
-    private final CategoryElementRepository categoryElementRepository;
-
     @Autowired
-    public CategoryElementController(CategoryElementRepository categoryElementRepository) {
-        this.categoryElementRepository = categoryElementRepository;
-    }
-
+    private CategoryElementService categoryElementService;
 
     @PostMapping("/InsertCategryElement")
     public void insertCategoryElement(@RequestBody CategoryElements categoryElements) {
-        categoryElementRepository.save(categoryElements);
+        categoryElementService.save(categoryElements);
     }
 
     @GetMapping("/GetByIdCategryElement")
     public CategoryElements categoryElements(@RequestParam int id) throws ItemNotFoundException {
-        return categoryElementRepository.findById(id).orElseThrow(() -> new ItemNotFoundException());
+        return categoryElementService.findById(id).orElseThrow(() -> new ItemNotFoundException());
     }
 
     @GetMapping("/GetAllCategryElement")
     public List<CategoryElements> categoryElementList(){
-        return categoryElementRepository.findAll();
+        return categoryElementService.findAll();
     }
 
     @PostMapping("/UpdateCategryElement")
     public void update(@RequestBody CategoryElements categoryElements){
-        categoryElementRepository.save(categoryElements);
+        categoryElementService.save(categoryElements);
     }
 
     @DeleteMapping("/DeleteCategryElement")
     public void delete(@RequestParam int id) {
-        categoryElementRepository.deleteById(id);
+        categoryElementService.deleteById(id);
     }
 }

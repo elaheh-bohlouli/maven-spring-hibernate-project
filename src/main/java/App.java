@@ -47,30 +47,20 @@ public class App {
         test.setRole("test");
         test.setName("تستر");
 
-        CategoryElements send = new CategoryElements();
-        send.setCategory(email);
-        send.setRole("send");
-        send.setName("ارسالی");
+        CategoryElements askDayOffStatus1 = new CategoryElements();
+        askDayOffStatus1.setCategory(askDayOff);
+        askDayOffStatus1.setRole("register");
+        askDayOffStatus1.setName("ثبت شده");
 
-        CategoryElements received = new CategoryElements();
-        received.setCategory(email);
-        received.setRole("received");
-        received.setName("دریافتی");
+        CategoryElements askDayOffStatus2 = new CategoryElements();
+        askDayOffStatus2.setCategory(askDayOff);
+        askDayOffStatus2.setRole("accepted");
+        askDayOffStatus2.setName("تایید شده");
 
-        CategoryElements register = new CategoryElements();
-        register.setCategory(askDayOff);
-        register.setRole("register");
-        register.setName("ثبت شده");
-
-        CategoryElements accepted = new CategoryElements();
-        accepted.setCategory(askDayOff);
-        accepted.setRole("accepted");
-        accepted.setName("تایید شده");
-
-        CategoryElements reject = new CategoryElements();
-        reject.setCategory(askDayOff);
-        reject.setRole("reject");
-        reject.setName("رد شده");
+        CategoryElements askDayOffStatus3 = new CategoryElements();
+        askDayOffStatus3.setCategory(askDayOff);
+        askDayOffStatus3.setRole("reject");
+        askDayOffStatus3.setName("رد شده");
 
         Employee employee1 = new Employee();
         employee1.setCategoryElements(head);
@@ -102,8 +92,8 @@ public class App {
         employee3.setManualId("Id_762");
 
         AskDayOff askDayOff1 = new AskDayOff();
-        askDayOff1.setEmployee(employee1);
-        askDayOff1.setCategoryElements(register);
+        askDayOff1.setEmployee(employee2);
+        askDayOff1.setCategoryElements(askDayOffStatus1);
         askDayOff1.setBeginDate(new Date());
         askDayOff1.setEndDate(new Date());
         askDayOff1.setActive(true);
@@ -112,11 +102,11 @@ public class App {
         Email email1 = new Email();
         email1.setEmployee(employee1);
         Set<Employee> employeeList = new HashSet<>();
-        employeeList.add(employee2); employeeList.add(employee3);
+        employeeList.add(employee2);
+        employeeList.add(employee3);
         email1.setReceivers(employeeList);
         email1.setText("Hi every body");
         email1.setActive(true);
-        email1.setCategoryElements(send);
         email1.setCreateDataTime(new Date());
         email1.setLastModifiedDataTime(new Date());
         email1.setManualId("Id_43");
@@ -130,15 +120,14 @@ public class App {
         entityManager.persist(head);
         entityManager.persist(dev);
         entityManager.persist(test);
-        entityManager.persist(send);
-        entityManager.persist(received);
-        entityManager.persist(register);
-        entityManager.persist(accepted);
-        entityManager.persist(reject);
+        entityManager.persist(askDayOffStatus1);
+        entityManager.persist(askDayOffStatus2);
+        entityManager.persist(askDayOffStatus3);
         entityManager.persist(employee1);
         entityManager.persist(employee2);
         entityManager.persist(employee3);
         entityManager.persist(askDayOff1);
+        entityManager.persist(email1);
 
 
         entityManager.getTransaction().commit();

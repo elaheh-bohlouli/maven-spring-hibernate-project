@@ -1,10 +1,10 @@
 package controller;
 
-import Commen.ItemNotFoundException;
+import exceptions.ItemNotFoundException;
 import model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import repository.EmployeeRepository;
+import service.EmployeeCRUDService;
 
 import java.util.List;
 
@@ -12,34 +12,31 @@ import java.util.List;
 @RequestMapping(value = "/EmployeeController")
 public class EmployeeController {
 
-    private final EmployeeRepository employeeRepository;
     @Autowired
-    public EmployeeController(EmployeeRepository employeeRepository) {
-        this.employeeRepository = employeeRepository;
-    }
+    private EmployeeCRUDService employeeCRUDService;
 
     @PostMapping("/InsertEmployee")
     public void insertEmployee(@RequestBody Employee employee){
-        employeeRepository.save(employee);
+        employeeCRUDService.save(employee);
     }
 
     @GetMapping("/GetByIdEmployee")
     public Employee employeeGetById(@RequestParam int id) throws ItemNotFoundException {
-        return employeeRepository.findById(id).orElseThrow(() -> new ItemNotFoundException());
+        return employeeCRUDService.findById(id).orElseThrow(() -> new ItemNotFoundException());
     }
 
     @GetMapping("/FindAllEmloyee")
     public List<Employee> employeeList(){
-        return employeeRepository.findAll();
+        return employeeCRUDService.findAll();
     }
 
     @PostMapping("/UpdateEmloyee")
     public void updateEmployee(@RequestBody Employee employee){
-        employeeRepository.save(employee);
+        employeeCRUDService.save(employee);
     }
 
     @DeleteMapping("/DeleteEmployee")
     public void deleteEmployee(@RequestParam int id){
-        employeeRepository.deleteById(id);
+        employeeCRUDService.deleteById(id);
     }
 }
