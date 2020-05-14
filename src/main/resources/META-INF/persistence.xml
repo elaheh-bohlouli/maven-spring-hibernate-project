@@ -6,13 +6,13 @@
              version="2.0">
 
     <persistence-unit name="org.ela" transaction-type="RESOURCE_LOCAL">
-        <class>App</class>
-        <class>model.Entities</class>
-        <class>model.CategoryElements</class>
-        <class>model.Category</class>
-        <class>model.AskDayOff</class>
-        <class>model.Employee</class>
-        <class>model.Email</class>
+        <class>Application</class>
+        <class>com.ela.model.Entities</class>
+        <class>com.ela.model.CategoryElements</class>
+        <class>com.ela.model.Category</class>
+        <class>com.ela.model.AskDayOff</class>
+        <class>com.ela.model.Employee</class>
+        <class>com.ela.model.Email</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
 
         <properties>
